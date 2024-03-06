@@ -1,3 +1,3 @@
-Use breakpoints to pause code execution during a debug session.
-Use Step Into from the Debug controls toolbar to observe the next executable code line.
-Use Step Out from the Debug controls toolbar to advance through the current method and back to the code line that called the method.
+- Use breakpoints to pause code execution during a debug session.
+- Use Step Into from the Debug controls toolbar to observe the next executable code line.
+- Use Step Out from the Debug controls toolbar to advance through the current method and back to the code line that called the method.
