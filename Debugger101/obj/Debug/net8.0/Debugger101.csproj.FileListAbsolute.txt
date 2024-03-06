@@ -1,0 +1,15 @@
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/bin/Debug/net8.0/Debugger101
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/bin/Debug/net8.0/Debugger101.deps.json
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/bin/Debug/net8.0/Debugger101.runtimeconfig.json
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/bin/Debug/net8.0/Debugger101.dll
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/bin/Debug/net8.0/Debugger101.pdb
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/Debugger101.GeneratedMSBuildEditorConfig.editorconfig
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/Debugger101.AssemblyInfoInputs.cache
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/Debugger101.AssemblyInfo.cs
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/Debugger101.csproj.CoreCompileInputs.cache
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/Debugger101.sourcelink.json
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/Debugger101.dll
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/refint/Debugger101.dll
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/Debugger101.pdb
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/Debugger101.genruntimeconfig.cache
+/Users/a61694/CodeWorkPlace/dotNetPlayground/Debugger101/obj/Debug/net8.0/ref/Debugger101.dll
