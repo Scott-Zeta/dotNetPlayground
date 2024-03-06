@@ -20,7 +20,7 @@ while (goodEntry == false)
   readResult = Console.ReadLine();
   goodEntry = int.TryParse(readResult, out startIndex);
 
-  if (startIndex > 5)
+  if (startIndex > 5 || startIndex < 1)
   {
     goodEntry = false;
     Console.WriteLine("\n\rEnter an integer value between 1 and 5");
@@ -28,7 +28,7 @@ while (goodEntry == false)
 }
 
 // Display the sum and then pause.
-Console.WriteLine($"\n\rThe sum of numbers {startIndex} through {numbers.Length} is: {SumValues(numbers, startIndex)}");
+Console.WriteLine($"\n\rThe sum of numbers {startIndex} through {numbers.Length} is: {SumValues(numbers, startIndex - 1)}");
 
 Console.WriteLine("press Enter to exit");
 readResult = Console.ReadLine();
