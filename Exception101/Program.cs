@@ -17,7 +17,12 @@ static void Process1()
   }
   catch (DivideByZeroException ex)
   {
-    Console.WriteLine($"Catched in Process1 method: {ex.Message}");
+    Console.WriteLine($"DivideByZeroException catched in Process1 method: {ex.Message}");
+    throw;
+  }
+  catch (OverflowException ex)
+  {
+    Console.WriteLine($"OverflowException catched in Process1 method: {ex.Message}");
     throw;
   }
 }
@@ -32,12 +37,51 @@ static void WriteMessage()
 
   try
   {
-    Console.WriteLine(float1 / float2);
+    string[] inputValues = new string[] { "three", "9999999999", "0", "2" };
+
+    foreach (string inputValue in inputValues)
+    {
+      int numValue = 0;
+      try
+      {
+        numValue = int.Parse(inputValue);
+      }
+      catch (FormatException)
+      {
+        Console.WriteLine("Invalid readResult. Please enter a valid number.");
+      }
+      catch (OverflowException)
+      {
+        Console.WriteLine("The number you entered is too large or too small.");
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(ex.Message);
+      }
+    }
+
+    try
+    {
+      Console.WriteLine(float1 / float2);
+      // Console.WriteLine(number1 / number2);
+    }
+    catch (DivideByZeroException ex)
+    {
+      Console.WriteLine($"Exception caught when dividing: {ex.Message}");
+      throw;
+    }
     checked
     {
-      smallNumber = (byte)number1;
+      try
+      {
+        smallNumber = (byte)number1;
+      }
+      catch (OverflowException ex)
+      {
+        Console.WriteLine($"Exception caught when convert data type: {ex.Message}");
+        throw;
+      }
     }
-    Console.WriteLine(number1 / number2);
   }
   catch (System.Exception ex)
   {
