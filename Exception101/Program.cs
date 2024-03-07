@@ -2,9 +2,9 @@
 {
   Process1();
 }
-catch
+catch (Exception ex)
 {
-  Console.WriteLine("An exception has occurred, Catched in Main method");
+  Console.WriteLine($"An exception has occurred, Catched in Main method: {ex}");
 }
 
 Console.WriteLine("Exit program normally");
@@ -15,9 +15,9 @@ static void Process1()
   {
     WriteMessage();
   }
-  catch (System.Exception)
+  catch (System.Exception ex)
   {
-    Console.WriteLine("An exception has occurred, Catched in Process1 method");
+    Console.WriteLine($"Catched in Process1 method: {ex.Message}");
     throw;
   }
 }
@@ -33,9 +33,9 @@ static void WriteMessage()
     Console.WriteLine(float1 / float2);
     Console.WriteLine(number1 / number2);
   }
-  catch (System.Exception)
+  catch (System.Exception ex)
   {
-    Console.WriteLine("An exception has occurred, Catched in WriteMessage method");
+    Console.WriteLine($"Catched in WriteMessage method: {ex.Message}");
     throw;
   }
 }
