@@ -49,3 +49,10 @@ catch // Step 3: the system finds a catch clause that can handle the exception
 Once an Exception was raised, it will search for **_catch_** block upwards if no catch block in same level. However, each level's **_finally_** will be executed first before going to the upper level.
 
 If no catch block founded, the program terminated and raise the Error.
+
+### Things to avoid when throwing exceptions
+
+- Don't use exceptions to change the flow of a program as part of ordinary execution. Use exceptions to report and handle error conditions.
+- Exceptions shouldn't be returned as a return value or parameter instead of being thrown.
+- Don't throw System.Exception, System.SystemException, System.NullReferenceException, or System.IndexOutOfRangeException intentionally from your own source code.
+- Don't create exceptions that can be thrown in debug mode but not release mode. To identify runtime errors during the development phase, use Debug.Assert instead.
