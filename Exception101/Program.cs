@@ -18,12 +18,12 @@ static void Process1()
   catch (DivideByZeroException ex)
   {
     Console.WriteLine($"DivideByZeroException catched in Process1 method: {ex.Message}");
-    throw;
+    throw new DivideByZeroException("A new DividedByZeroException", ex);
   }
   catch (OverflowException ex)
   {
     Console.WriteLine($"OverflowException catched in Process1 method: {ex.Message}");
-    throw;
+    throw new OverflowException("A new OverflowException", ex);
   }
 }
 
@@ -37,28 +37,28 @@ static void WriteMessage()
 
   try
   {
-    string[] inputValues = new string[] { "three", "9999999999", "0", "2" };
+    // string[] inputValues = new string[] { "three", "9999999999", "0", "2" };
 
-    foreach (string inputValue in inputValues)
-    {
-      int numValue = 0;
-      try
-      {
-        numValue = int.Parse(inputValue);
-      }
-      catch (FormatException)
-      {
-        Console.WriteLine("Invalid readResult. Please enter a valid number.");
-      }
-      catch (OverflowException)
-      {
-        Console.WriteLine("The number you entered is too large or too small.");
-      }
-      catch (Exception ex)
-      {
-        Console.WriteLine(ex.Message);
-      }
-    }
+    // foreach (string inputValue in inputValues)
+    // {
+    //   int numValue = 0;
+    //   try
+    //   {
+    //     numValue = int.Parse(inputValue);
+    //   }
+    //   catch (FormatException)
+    //   {
+    //     Console.WriteLine("Invalid readResult. Please enter a valid number.");
+    //   }
+    //   catch (OverflowException)
+    //   {
+    //     Console.WriteLine("The number you entered is too large or too small.");
+    //   }
+    //   catch (Exception ex)
+    //   {
+    //     Console.WriteLine(ex.Message);
+    //   }
+    // }
 
     try
     {
