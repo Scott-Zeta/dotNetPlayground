@@ -25,3 +25,4 @@ Due to the longer term and increasing of complexity
   - Writes to an attached debugger.
   - Use this API when you create logs that will be enabled only in debug builds.
   - Debug.Assert/Debug.Writeline message won't effect the code in produce
+  - Debug.Assert is more like a conditional break point. If condition be breached, code will be paused if in debugger, and get the message in both debugger and regular running
