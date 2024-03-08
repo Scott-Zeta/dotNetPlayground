@@ -24,3 +24,4 @@ Due to the longer term and increasing of complexity
   - Only enabled when DEBUG is defined (when in debug mode).
   - Writes to an attached debugger.
   - Use this API when you create logs that will be enabled only in debug builds.
+  - Debug.Assert/Debug.Writeline message won't effect the code in produce
