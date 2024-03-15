@@ -1,36 +1,18 @@
 ﻿using System.IO;
 using System.Collections.Generic;
-
-//get current running directory of the program
-Console.WriteLine(Directory.GetCurrentDirectory());
-
-//get the path of the user's documents folder, whatever the OS is
-string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-Console.WriteLine(docPath);
-
-// Path class can bu usefule to handle different slash in different OS
-// Always avoid hardcoding the path
-Console.WriteLine($"stores{Path.DirectorySeparatorChar}201");
-Console.WriteLine(Path.Combine("stores", "201"));
-// Get extension
-Console.WriteLine(Path.GetExtension("sales.json"));
-
-// Get File info
-string fileName = $"stores{Path.DirectorySeparatorChar}201{Path.DirectorySeparatorChar}sales{Path.DirectorySeparatorChar}sales.json";
-
-FileInfo info = new FileInfo(fileName);
-
-Console.WriteLine($"Full Name: {info.FullName}{Environment.NewLine}Directory: {info.Directory}{Environment.NewLine}Extension: {info.Extension}{Environment.NewLine}Create Date: {info.CreationTime}"); // And many more
-
-Console.WriteLine("===============End of notes================");
+using Newtonsoft.Json;
 
 var currentDirectory = Directory.GetCurrentDirectory();
 var storesDirectory = Path.Combine(currentDirectory, "stores");
-var salesFiles = FindFiles(storesDirectory);
 
 var salesTotalDir = Path.Combine(currentDirectory, "salesTotalDir");
 Directory.CreateDirectory(salesTotalDir);
-File.WriteAllText(Path.Combine(salesTotalDir, "total.txt"), String.Empty);
+
+var salesFiles = FindFiles(storesDirectory);
+
+var salesTotal = CalculateSalesTotal(salesFiles);
+
+File.AppendAllText(Path.Combine(salesTotalDir, "totals.txt"), $"{salesTotal}{Environment.NewLine}");
 
 IEnumerable<string> FindFiles(string folderName)
 {
@@ -50,3 +32,26 @@ IEnumerable<string> FindFiles(string folderName)
 
   return salesFiles;
 }
+
+double CalculateSalesTotal(IEnumerable<string> salesFiles)
+{
+  double salesTotal = 0;
+
+  // Loop over each file path in salesFiles
+  foreach (var file in salesFiles)
+  {
+    // Read the contents of the file
+    string salesJson = File.ReadAllText(file);
+
+    // Parse the contents as JSON
+    SalesData? data = JsonConvert.DeserializeObject<SalesData?>(salesJson);
+
+    // Add the amount found in the Total field to the salesTotal variable
+    salesTotal += data?.Total ?? 0;
+  }
+
+  return salesTotal;
+}
+
+// Compare to class, record is simpler and more lightweight focus on carrying data. 
+record SalesData(double Total);
