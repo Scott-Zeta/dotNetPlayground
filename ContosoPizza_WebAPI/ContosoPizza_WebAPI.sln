@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoPizza_WebAPI", "ContosoPizza_WebAPI.csproj", "{CA59123D-666B-4A3A-B671-52E7500C3278}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA59123D-666B-4A3A-B671-52E7500C3278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA59123D-666B-4A3A-B671-52E7500C3278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA59123D-666B-4A3A-B671-52E7500C3278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA59123D-666B-4A3A-B671-52E7500C3278}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D518F284-F1B9-4E82-8922-4302B37412B7}
+	EndGlobalSection
+EndGlobal
