@@ -27,10 +27,10 @@ Console.WriteLine("===============End of notes================");
 var currentDirectory = Directory.GetCurrentDirectory();
 var storesDirectory = Path.Combine(currentDirectory, "stores");
 var salesFiles = FindFiles(storesDirectory);
-foreach (var file in salesFiles)
-{
-  Console.WriteLine(file);
-}
+
+var salesTotalDir = Path.Combine(currentDirectory, "salesTotalDir");
+Directory.CreateDirectory(salesTotalDir);
+File.WriteAllText(Path.Combine(salesTotalDir, "total.txt"), String.Empty);
 
 IEnumerable<string> FindFiles(string folderName)
 {
