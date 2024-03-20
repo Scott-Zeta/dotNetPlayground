@@ -27,3 +27,11 @@ To install the `Microsoft.dotnet-httprepl` tool on macOS using the .NET CLI, fol
 5. **Restart Terminal**: For the changes to take effect, you may need to close and reopen the Terminal, or you can reload the profile with the command `source ~/.bash_profile` (or `source ~/.zshrc` for Zsh).
 
 After completing these steps, you should be able to run the `httprepl` command from any directory in your Terminal to start using the HTTP REPL tool.
+
+## For running in HTTPS
+
+```
+dotnet run --launch-profile https
+```
+
+https://github.com/dotnet/sdk/issues/29569
