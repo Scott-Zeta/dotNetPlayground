@@ -41,6 +41,7 @@ public static class PizzaService
 
   public static void Update(Pizza pizza)
   {
+    // Iterate through the list of pizzas, pass each pizza as p to the lambda expression
     var index = Pizzas.FindIndex(p => p.Id == pizza.Id);
     if (index == -1)
       return;

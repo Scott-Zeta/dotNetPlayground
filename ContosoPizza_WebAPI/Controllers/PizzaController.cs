@@ -26,11 +26,13 @@ public class PizzaController : ControllerBase
     {
       return NotFound();
     }
+    // ActionResult<T> implements IActionResult, it can return the data direclty, automatically with 200 status code
     return pizza;
   }
   // POST action
   [HttpPost]
   // IActionResult can provide feedback to user to let them know if the action was successful or not
+  // Needs more config than ActionResult<T>
   public IActionResult Create(Pizza pizza)
   {
     PizzaService.Add(pizza);
@@ -38,11 +40,24 @@ public class PizzaController : ControllerBase
     // Returne Status Code(201), description("Creat") and url notation(/pizza/3) in header, then the object(pizza) in the body
   }
   // PUT action
-  // [HttpPut("{id}")]
-  // public IActionResult Update(int id, Pizza pizza)
-  // {
+  [HttpPut("{id}")]
+  public IActionResult Update(int id, Pizza pizza)
+  {
+    if (id != pizza.Id)
+    {
+      return BadRequest();
+    }
 
-  // }
+    var existingPizza = PizzaService.Get(id);
+    if (existingPizza is null)
+    {
+      return NotFound();
+    }
+
+    PizzaService.Update(pizza);
+
+    return NoContent();
+  }
 
   // DELETE action
   // [HttpDelete("{id}")]
