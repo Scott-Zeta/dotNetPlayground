@@ -60,9 +60,19 @@ public class PizzaController : ControllerBase
   }
 
   // DELETE action
-  // [HttpDelete("{id}")]
-  // public IActionResult Delete(int id)
-  // {
+  [HttpDelete("{id}")]
+  public IActionResult Delete(int id)
+  {
+    var pizza = PizzaService.Get(id);
 
-  // }
+    if (pizza is null)
+    {
+      return NotFound();
+    }
+
+    PizzaService.Delete(id);
+
+    return NoContent();
+  }
+  // Remember to return NoContent() when update or deletion is successful
 }
