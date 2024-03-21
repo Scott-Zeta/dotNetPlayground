@@ -35,11 +35,3 @@ dotnet run --launch-profile https
 ```
 
 https://github.com/dotnet/sdk/issues/29569
-
-## What is MVC?
-
-- Models (Food/Material): In a restaurant, the food or ingredients represent the core items that are being managed and served. Similarly, in an MVC application, models represent the data and the business logic that manipulates this data. They are the core entities around which the application is built.
-
-- Controllers (Chef): The chef in a restaurant takes the ingredients (food/material) and prepares dishes according to the customers' orders. In MVC, the controller takes the data (models) and processes it according to the user's request, deciding what data to display and which view to render.
-
-- Services (Waiter): In a restaurant, the waiter serves as the intermediary between the customers and the kitchen. The waiter takes the orders to the chef and brings the prepared food back to the customers. In an MVC application, services act as intermediaries between the controllers (and sometimes models) and external operations like database access, API calls, or complex business logic. They handle the specifics of processing requests and delivering the data where it’s needed.
