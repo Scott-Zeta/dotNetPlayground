@@ -6,6 +6,7 @@ namespace ContosoPizza.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+// This line define the route for the controller, it will be used as the base route for all the actions in the controller
 public class PizzaController : ControllerBase
 {
   public PizzaController()
@@ -17,7 +18,8 @@ public class PizzaController : ControllerBase
   public ActionResult<List<Pizza>> GetAll() => PizzaService.GetAll();
 
   // GET by Id action
-  [HttpGet("{id}")]
+  [HttpGet("{id}")] // This line define what type of request this action will handle,
+  // and the parameter will be passed to the action method
   public ActionResult<Pizza> Get(int id)
   {
     var pizza = PizzaService.Get(id);
