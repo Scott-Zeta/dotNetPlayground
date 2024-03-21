@@ -29,8 +29,25 @@ public class PizzaController : ControllerBase
     return pizza;
   }
   // POST action
-
+  [HttpPost]
+  // IActionResult can provide feedback to user to let them know if the action was successful or not
+  public IActionResult Create(Pizza pizza)
+  {
+    PizzaService.Add(pizza);
+    return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
+    // Returne Status Code(201), description("Creat") and url notation(/pizza/3) in header, then the object(pizza) in the body
+  }
   // PUT action
+  // [HttpPut("{id}")]
+  // public IActionResult Update(int id, Pizza pizza)
+  // {
+
+  // }
 
   // DELETE action
+  // [HttpDelete("{id}")]
+  // public IActionResult Delete(int id)
+  // {
+
+  // }
 }
