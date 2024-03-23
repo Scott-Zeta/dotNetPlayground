@@ -6,6 +6,26 @@ dotnet watch --launch-profile https
 
 [My Anwser Reference](https://learn.microsoft.com/en-us/answers/questions/1297509/how-to-fix-this-error-warn-microsoft-aspnetcore-ht?page=1&orderby=newest#answers)
 
+## A typical Razor page
+
+- **[pageName].cshtml**:
+  Manage the front-end aspect like view and client interaction.
+
+  ```C#
+  @{...}
+  ```
+
+  The Block is similar to JS/TS logic in a React component
+
+  ```html
+  <div>...</div>
+  ```
+
+  This Block is more like the return section in a React components control the dom rendering.
+
+- **[pageName].cshtml.cs**:
+  Manage the back-end aspect like how server action interact with the page, such as request, providing data.
+
 # Starter app for Create a web UI with ASP.NET Core
 
 Welcome! This is the starter app for the [Create a web UI with ASP.NET Core](https://learn.microsoft.com/training/modules/create-razor-pages-aspnet-core/) Microsoft Training module.
