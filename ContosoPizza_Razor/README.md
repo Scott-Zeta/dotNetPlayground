@@ -11,13 +11,13 @@ dotnet watch --launch-profile https
 - **[pageName].cshtml**:
   Manage the front-end aspect like view and client interaction.
 
-  ```C#
+  ```razor
   @{...}
   ```
 
   The Block is similar to JS/TS logic in a React component
 
-  ```html
+  ```razor
   <div>...</div>
   ```
 
