@@ -9,7 +9,7 @@ dotnet watch --launch-profile https
 ## A typical Razor page
 
 - **[pageName].cshtml**:
-  Manage the front-end aspect like view and client interaction.
+  Manage the front-end aspect like view and layout ... everything about the vision.
 
   ```razor
   @{...}
@@ -24,7 +24,55 @@ dotnet watch --launch-profile https
   This Block is more like the return section in a React components control the dom rendering.
 
 - **[pageName].cshtml.cs**:
-  Manage the back-end aspect like how server action interact with the page, such as request, providing data.
+  Manage the back-end aspect like how server action interact with the page, such as request, providing data ... and everything about logic.
+
+## Tage Helpers
+
+These attributes are designed for specific element tags. Not likely to use in other tags.
+
+- **Partial Tag Helper**:
+
+```razor
+<partial name="_ValidationScriptsPartial" />
+```
+
+Insert another cshtml file into the current page. Can use both for JS logic or Dom layout. Similar to the React reusable components.
+
+- **Label Tag Helper**:
+
+```razor
+<label asp-for="Foo.Id" class="control-label"></label>
+```
+
+Bind a dynamic value from the Model to the label. Typically like the
+
+```react
+<p>${dynamicValue}</p>
+```
+
+**Not very clear for the control-label part for now. Is that for CSS?**
+
+- **Input tag helper**:
+
+```razor
+<input asp-for="Foo.Id" class="form-control" />
+```
+
+Bind the value in input box to the model's value for input.
+
+- **Validation Summary Tag Helper**
+
+```razor
+<div asp-validation-summary="All"></div>
+```
+
+This is just a div section for validation vision summary. It does not include in validation logic.
+
+### A Typical approach
+
+- [SomeModel].cs include the data model and validation logic.
+- [SomePage].cshtml.cs include the page interaction logic.
+- [SomePage].cshtml include the vision of the page.
 
 # Starter app for Create a web UI with ASP.NET Core
 
