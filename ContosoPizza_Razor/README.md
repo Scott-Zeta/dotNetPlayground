@@ -29,6 +29,7 @@ dotnet watch --launch-profile https
 ## Tage Helpers
 
 These attributes are designed for specific element tags. Not likely to use in other tags.
+They can be helpful when binding form from the data to the Model instance.
 
 - **Partial Tag Helper**:
 
@@ -36,7 +37,7 @@ These attributes are designed for specific element tags. Not likely to use in ot
 <partial name="_ValidationScriptsPartial" />
 ```
 
-Insert another cshtml file into the current page. Can use both for JS logic or Dom layout. Similar to the React reusable components.
+Insert another cshtml file into the current page. Better to use it for JS shared between files.
 
 - **Label Tag Helper**:
 
