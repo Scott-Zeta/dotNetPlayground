@@ -68,11 +68,29 @@ Bind the value in input box to the model's value for input.
 
 This is just a div section for validation vision summary. It does not include in validation logic.
 
-### A Typical approach
+## A Typical Razor Page approach
 
 - [SomeModel].cs include the data model and validation logic.
 - [SomePage].cshtml.cs include the page interaction logic.
 - [SomePage].cshtml include the vision of the page.
+
+### A Razor Form Workflow
+
+1. **User Interaction**: The user fills out the form on the Razor Page and submits it, initiating a POST request to the server.
+
+2. **Model Binding**: The form data is bound to the instance of the Page Model. This is where the properties decorated with `[BindProperty]` in the Page Model come into play. The Razor framework attempts to map the incoming form data to these properties.
+
+3. **Validation Check**: Once the model binding is complete, ASP.NET Core checks the bound properties against the validation rules specified in the model. If the data doesn't match the model's structure or violates validation rules, the model state becomes invalid (`ModelState.IsValid` becomes `false`).
+
+   - If the incoming data does not conform to the expected structure (e.g., required fields are missing, data types are incorrect), the corresponding properties in the Page Model will not be populated correctly, and validation errors will be added to the ModelState.
+   - Validation is performed based on attributes like `[Required]`, `[MinLength]`, etc., defined in the model.
+
+4. **Conditional Processing**:
+
+   - If the data is valid (i.e., it matches the model structure and passes all validation checks), proceed with creating a new instance, updating data, or performing further business logic as required.
+   - If the data is invalid, the server does not proceed with the business logic intended for valid data. Instead, it prepares to re-render the page, showing the validation errors.
+
+5. **Response Generation**: The Page Model then generates a response to the Page to give the feedback to the user.
 
 # Starter app for Create a web UI with ASP.NET Core
 
