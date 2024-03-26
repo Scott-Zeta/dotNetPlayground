@@ -21,7 +21,12 @@ namespace ContosoPizza.Pages
 
             return RedirectToAction("Get");
         }
+        public IActionResult OnPostDelete(int id)
+        {
+            _service.DeletePizza(id);
 
+            return RedirectToAction("Get");
+        }
         private readonly PizzaService _service;
         public IList<Pizza> PizzaList { get; set; } = default!;
 
