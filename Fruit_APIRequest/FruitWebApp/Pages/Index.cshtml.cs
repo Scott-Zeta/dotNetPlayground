@@ -20,10 +20,10 @@ namespace FruitWebApp.Pages
         // Add the data model and bind the form data to the page model properties
         // Enumerable since an array is expected as a response
         [BindProperty]
-        public IEnumerable<FruitModel> FruitModels { get; set; }
+        public IEnumerable<FruitModel>? FruitModels { get; set; }
 
         // Begin GET operation code
-        public async Task onGet()
+        public async Task OnGet()
         {
             // Create the HTTP client using the FruitAPI named factory set in the Program.cs file
             var httpClient = _httpClientFactory.CreateClient("FruitAPI");
