@@ -8,12 +8,16 @@ using System.Diagnostics;
 
 namespace FruitWebApp.Pages
 {
-	public class DeleteModel : PageModel
+    public class DeleteModel : PageModel
     {
         // IHttpClientFactory set using dependency injection 
         private readonly IHttpClientFactory _httpClientFactory;
-
-        public DeleteModel(IHttpClientFactory httpClientFactory) => _httpClientFactory = httpClientFactory;
+        private readonly ILogger<DeleteModel> _logger;
+        public DeleteModel(IHttpClientFactory httpClientFactory, ILogger<DeleteModel> logger)
+        {
+            _httpClientFactory = httpClientFactory;
+            _logger = logger;
+        }
 
         // Add the data model and bind the form data to the page model properties
         [BindProperty]
@@ -37,12 +41,29 @@ namespace FruitWebApp.Pages
                 FruitModels = await JsonSerializer.DeserializeAsync<FruitModel>(contentStream);
             }
         }
-		
 
-		// Begin DELETE operation code
-        
+
+        // Begin DELETE operation code
+        public async Task<IActionResult> OnPost()
+        {
+            _logger.LogInformation($"Firing DELETE request to the API.");
+            var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+
+            using HttpResponseMessage response = await httpClient.DeleteAsync(FruitModels.id.ToString());
+            _logger.LogInformation($"HTTP DELETE request to {httpClient.BaseAddress} returned {response.StatusCode}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["success"] = "Data was deleted successfully.";
+                return RedirectToPage("Index");
+            }
+            else
+            {
+                TempData["failure"] = "Operation was not successful";
+                return RedirectToPage("Index");
+            }
+        }
         // End DELETE operation code
-
-	}
+    }
 }
 
