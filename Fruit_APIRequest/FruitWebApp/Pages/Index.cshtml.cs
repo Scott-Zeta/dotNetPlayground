@@ -11,10 +11,11 @@ namespace FruitWebApp.Pages
     {
         // IHttpClientFactory set using dependency injection 
         private readonly IHttpClientFactory _httpClientFactory;
-
-        public IndexModel(IHttpClientFactory httpClientFactory)
+        private readonly ILogger<IndexModel> _logger;
+        public IndexModel(IHttpClientFactory httpClientFactory, ILogger<IndexModel> logger)
         {
             _httpClientFactory = httpClientFactory;
+            _logger = logger;
         }
 
         // Add the data model and bind the form data to the page model properties
@@ -34,12 +35,18 @@ namespace FruitWebApp.Pages
             // Can be replaced with other specific endpoints.
             using HttpResponseMessage response = await httpClient.GetAsync("");
 
+            _logger.LogInformation($"HTTP GET request to {httpClient.BaseAddress} returned {response.StatusCode}");
 
             // Check the response by the status code
             if (response.IsSuccessStatusCode)
             {
                 using var contentStream = await response.Content.ReadAsStreamAsync();
                 FruitModels = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
+
+                // Log the response content for debugging
+                contentStream.Seek(0, SeekOrigin.Begin); // Reset the stream position to the beginning
+                var content = await new StreamReader(contentStream).ReadToEndAsync();
+                _logger.LogInformation($"Response content: {content}");
             }
         }
         // End GET operation code
