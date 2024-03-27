@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace FruitWebApp.Pages
 {
-	public class EditModel : PageModel
+    public class EditModel : PageModel
     {
         // IHttpClientFactory set using dependency injection 
         private readonly IHttpClientFactory _httpClientFactory;
@@ -23,7 +23,7 @@ namespace FruitWebApp.Pages
         // Retrieve the data to populate the form for editing
         public async Task OnGet(int id)
         {
- 
+
             // Create the HTTP client using the FruitAPI named factory
             var httpClient = _httpClientFactory.CreateClient("FruitAPI");
 
@@ -37,12 +37,33 @@ namespace FruitWebApp.Pages
                 FruitModels = await JsonSerializer.DeserializeAsync<FruitModel>(contentStream);
             }
         }
-		
 
-		// Begin PUT operation code
-        
+
+        // Begin PUT operation code
+        public async Task<IActionResult> OnPost()
+        {
+            // Parsing the content to JSON
+            var jsonContent = new StringContent(JsonSerializer.Serialize(FruitModels),
+                            Encoding.UTF8, "application/json");
+
+            // Sending the PUT request to the API
+            var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+            // point to the id of the record to be updated in entry point
+            using HttpResponseMessage response = await httpClient.PutAsync(FruitModels.id.ToString(), jsonContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["success"] = "Data was edited successfully.";
+                return RedirectToPage("Index");
+            }
+            else
+            {
+                TempData["failure"] = "Operation was not successful";
+                return RedirectToPage("Index");
+            }
+        }
         // End PUT operation code
 
-	}
+    }
 }
 
