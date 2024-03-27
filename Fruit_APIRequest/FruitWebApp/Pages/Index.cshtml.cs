@@ -23,7 +23,25 @@ namespace FruitWebApp.Pages
         public IEnumerable<FruitModel> FruitModels { get; set; }
 
         // Begin GET operation code
-        
+        public async Task onGet()
+        {
+            // Create the HTTP client using the FruitAPI named factory set in the Program.cs file
+            var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+
+            // Perform the GET request and store the response.
+            // This step is like Fetch in JavaScript.
+            // Empty string means the base URL is used.
+            // Can be replaced with other specific endpoints.
+            using HttpResponseMessage response = await httpClient.GetAsync("");
+
+
+            // Check the response by the status code
+            if (response.IsSuccessStatusCode)
+            {
+                using var contentStream = await response.Content.ReadAsStreamAsync();
+                FruitModels = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
+            }
+        }
         // End GET operation code
     }
 }
