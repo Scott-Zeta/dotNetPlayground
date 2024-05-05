@@ -26,6 +26,16 @@ if (app.Environment.IsDevelopment())
 // Interact with DB by EF built-in functions
 app.MapGet("/pizzas", async (PizzaDb db) => await db.Pizzas.ToListAsync());
 
+app.MapGet("/pizza/{id}", async (PizzaDb db, int id) =>
+{
+    var pizza = await db.Pizzas.FindAsync(id);
+    if (pizza == null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(pizza);
+});
+
 app.MapPost("/pizza", async (PizzaDb db, Pizza pizza) =>
 {
     await db.Pizzas.AddAsync(pizza);
